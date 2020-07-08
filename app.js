@@ -40,4 +40,4 @@ const renderPokemon = pokeData => {
 }
 
 
-fetchGen1Pokemon()
+// fetchGen1Pokemon()
