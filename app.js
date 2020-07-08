@@ -32,7 +32,7 @@ const renderPokemon = pokeData => {
     pokeDiv.className = 'pokemon' 
     pokeName.innerText = pokeData.name
     pokeImg.src = pokeData.sprites['front_default']
-    pokeNum.innerText = `Pokedex #${pokeData.order}`
+    pokeNum.innerText = `Pokedex #${pokeData.id}`
     pokeType.innerText = `Type: ${pokeData.types[0].type.name}`
 
     pokeDiv.append(pokeName, pokeImg, pokeNum, pokeType)
