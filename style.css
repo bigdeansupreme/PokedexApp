@@ -20,8 +20,6 @@ body {
 h1 {
     font-family: 'Finger Paint', cursive, sans-serif;
     font-size: 45px;
-    /* display: flex; */
-    /* justify-content: center; */
     background: -webkit-linear-gradient(red, yellow);
   -webkit-background-clip: text;
   background-clip: text;
@@ -36,13 +34,13 @@ h1 {
 }
 
 .pokemon {
+    cursor: pointer;
     border-style: groove;
     border-color: rgb(0 0 0 / 70%);
     border-radius: 10px;
     padding: 5px;
     margin: 5px;
     font-family: 'Play', sans-serif;
-    cursor: pointer;
 }
 
 .pokemon h3 {
@@ -56,7 +54,6 @@ h1 {
 .display-options {
     display: flex;
     align-items: flex-end;
-    z-index: 100;
     flex-direction: row-reverse;
     margin-bottom: 5px;
   }
@@ -69,12 +66,6 @@ h1 {
     justify-content: flex-end;
   }
   
-  .toggle-text {
-    position: relative;
-    top: -4px;
-    right: 5px;
-    color: var(--on-background);
-  }
   
   .theme-switch {
     display: flex;
@@ -130,7 +121,6 @@ h1 {
   
   .fas {
     font-size: 30px;
-    /* margin-right: 5px; */
   }
 
   .buttons-container {
@@ -150,6 +140,7 @@ h1 {
       box-shadow: 0 5px 0 0 rgba(0, 0, 0, 0.3);
       margin-bottom: 5px;
       margin-left: 5px;
+      color: whitesmoke;
   }
 
   button:active {
@@ -157,6 +148,13 @@ h1 {
   }
 
   #gen1 {
-    background: linear-gradient(90deg, rgb(247, 15, 15) 50%, rgb(10, 10, 241) 50%);
-    color: whitesmoke;
+    background: linear-gradient(90deg, rgb(247, 15, 15) 50%, rgb(41, 41, 245) 50%);
+  }
+
+  #gen2 {
+      background: linear-gradient(90deg, silver 50%, rgb(247, 190, 4) 50%);
+  }
+
+  #gen3 {
+      background: linear-gradient(90deg, rgba(177, 2, 2, 0.918) 50%, rgb(19, 2, 172) 50%);
   }
