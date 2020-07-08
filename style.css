@@ -7,7 +7,6 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
-    font-family: 'Poor Story', cursive, sans-serif;
     background: whitesmoke;
 }
 
@@ -24,5 +23,12 @@ h1 {
 
 .pokemon-container {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    margin-left: 10px;
+}
+
+.pokemon {
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 5px;
 }
