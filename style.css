@@ -147,14 +147,14 @@ h1 {
       transform: translateY(4px);
   }
 
-  #gen1 {
+  #gen-one {
     background: linear-gradient(90deg, rgb(247, 15, 15) 50%, rgb(41, 41, 245) 50%);
   }
 
-  #gen2 {
+  #gen-two {
       background: linear-gradient(90deg, silver 50%, rgb(247, 190, 4) 50%);
   }
 
-  #gen3 {
+  #gen-three {
       background: linear-gradient(90deg, rgba(177, 2, 2, 0.918) 50%, rgb(19, 2, 172) 50%);
   }
