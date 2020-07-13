@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Finger+Paint&family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Courgette&family=Finger+Paint&display=swap');
 
 html {
     box-sizing: border-box;
@@ -45,6 +45,20 @@ h1 {
 
 .pokemon-container, #name-div, #images-div {
   align-items: center;
+}
+
+#types-div {
+  display: flex;
+}
+
+#types-div h4 {
+  font-family: 'Courgette', cursive;
+  font-size: 25px;
+  margin-left: 7px;
+  border-radius: 10px;
+  border: 2px solid black;
+  background: black;
+  color: white;
 }
 
 .pokemon-name {

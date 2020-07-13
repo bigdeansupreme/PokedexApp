@@ -10,9 +10,8 @@ const gen3Btn = document.getElementById('gen-three')
 
 
 // fetch list of pokemon urls
-const fetchPokemon = (url) => {
-    pokeContainer.innerHTML = ''
-    pokeContainer.className = 'all-pokemon-container'
+const fetchAllPokemon = (url) => {
+    allPokemonContainer()
     fetch(url)
     .then(res => res.json())
     .then(allPokemon => {
@@ -21,7 +20,7 @@ const fetchPokemon = (url) => {
 }
 
 
-// fetch each pokemon's data
+// fetch each pokemon's data from urls
 const fetchPokemonData = (pokemon) => {
     let pokeInfoUrl = pokemon.url
     fetch(pokeInfoUrl)
@@ -42,7 +41,12 @@ const fetch1Pokemon = (e) => {
 
 // display pokemon with data retrieved
 const renderAllPokemon = pokeData => {
-    
+    createAllGenPokemon(pokeData)
+}
+
+
+// create all pokemon for a generation
+const createAllGenPokemon = pokeData => {
     const pokeDiv = document.createElement('div')
     const pokeName = document.createElement('h3')
     const pokeImg = document.createElement('img')
@@ -65,7 +69,7 @@ const renderAllPokemon = pokeData => {
             pokeImg.src = pokeData.sprites['front_default']
         }
     })
-
+    
     pokeDiv.addEventListener('click', fetch1Pokemon)
     
     pokeDiv.append(pokeName, pokeImg, pokeNum, pokeType)
@@ -74,20 +78,17 @@ const renderAllPokemon = pokeData => {
 
 // render 1 specific pokemon with more information
 const render1Pokemon = (onePokemonData) => {
-    pokeContainer.innerHTML = ''
-    pokeContainer.className = 'pokemon-container'
+    onePokemonContainer()
     console.log(onePokemonData)
     createPokemonName(onePokemonData)
     createPokemonImages(onePokemonData)
+    createPokemonTypes(onePokemonData)
 
-    
-
-
+ 
     
 }
 
-
-// create one pokemon name
+// create name of one pokemon, slap on dom
 const createPokemonName = pokemon => {
     
     const nameDiv = document.createElement('div')
@@ -99,7 +100,7 @@ const createPokemonName = pokemon => {
     pokeContainer.appendChild(nameDiv)
 }
 
-// create images of one pokemon
+// create images of one pokemon, slap on dom
 const createPokemonImages = pokemon => {
     const imagesDiv = document.createElement('div')
     imagesDiv.id = 'images-div'
@@ -125,18 +126,44 @@ const createPokemonImages = pokemon => {
     pokeContainer.appendChild(imagesDiv)
 }
 
+// create types of one pokemon, slap on dom
+const createPokemonTypes = pokemon => {
+    const typesDiv = document.createElement('div')
+    typesDiv.id = 'types-div'
+    
+    pokemon.types.forEach(type => {
+        let pokemonType = document.createElement('h4')
+        pokemonType.innerText = type.type.name
+        typesDiv.append(pokemonType)
+    })
+
+    pokeContainer.appendChild(typesDiv)
+}
+
+// refresh container to style for 1 pokemon
+const onePokemonContainer = () => {
+    pokeContainer.innerHTML = ''
+    pokeContainer.className = 'pokemon-container'
+}
+
+// refresh container to style all pokemon
+const allPokemonContainer = () => {
+    pokeContainer.innerHTML = ''
+    pokeContainer.className = 'all-pokemon-container'
+}
+
 //event listeners
 
 gen1Btn.addEventListener('click', () => {
-    fetchPokemon(gen1Url)
+    fetchAllPokemon(gen1Url)
 })
 
 gen2Btn.addEventListener('click', () => {
-    fetchPokemon(gen2Url)
+    fetchAllPokemon(gen2Url)
 })
 
 gen3Btn.addEventListener('click', () => {
-    fetchPokemon(gen3Url)
+    fetchAllPokemon(gen3Url)
 })
 
 
