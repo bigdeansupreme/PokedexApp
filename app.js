@@ -1,4 +1,4 @@
-
+// global variables
 const pokeContainer = document.querySelector('.pokemon-container')
 const gen1Url = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 const gen2Url = 'https://pokeapi.co/api/v2/pokemon/?limit=100&offset=151'
@@ -7,10 +7,9 @@ const shinySwitch = document.querySelector('input[type="checkbox"]')
 const gen1Btn = document.getElementById('gen-one')
 const gen2Btn = document.getElementById('gen-two')
 const gen3Btn = document.getElementById('gen-three')
-// const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 
 
-// fetch list of pokemon
+// fetch list of pokemon urls
 const fetchPokemon = (url) => {
     pokeContainer.innerHTML = ''
     fetch(url)
@@ -26,12 +25,22 @@ const fetchPokemonData = (pokemon) => {
     let pokeInfoUrl = pokemon.url
     fetch(pokeInfoUrl)
     .then(res => res.json())
-    .then(pokeData => renderPokemon(pokeData))
+    .then(pokeData => renderAllPokemon(pokeData))
     
 }
 
+// fetch 1 specific pokemon
+const fetch1Pokemon = (e) => {
+    let pokeId = e.target.dataset.id
+    const specificPokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokeId}/`
+    fetch(specificPokemonUrl)
+    .then(res => res.json())
+    .then(onePokemonData => render1Pokemon(onePokemonData))
+
+}
+
 // display pokemon with data retrieved
-const renderPokemon = pokeData => {
+const renderAllPokemon = pokeData => {
     
     const pokeDiv = document.createElement('div')
     const pokeName = document.createElement('h3')
@@ -40,10 +49,11 @@ const renderPokemon = pokeData => {
     const pokeType = document.createElement('p')
     
     pokeDiv.dataset.id = pokeData.id
+    pokeName.dataset.id = pokeData.id
+    pokeImg.dataset.id = pokeData.id
     pokeDiv.className = 'pokemon' 
     pokeName.innerText = pokeData.name
-    // pokeImg.src = pokeData.sprites['front_default']
-    pokeImg.className = 'images'
+    pokeImg.src = pokeData.sprites['front_default']
     pokeNum.innerText = `Pokedex #${pokeData.id}`
     pokeType.innerText = `Type: ${pokeData.types[0].type.name}`
     
@@ -54,9 +64,37 @@ const renderPokemon = pokeData => {
             pokeImg.src = pokeData.sprites['front_default']
         }
     })
+
+    pokeDiv.addEventListener('click', fetch1Pokemon)
     
     pokeDiv.append(pokeName, pokeImg, pokeNum, pokeType)
     pokeContainer.appendChild(pokeDiv)
+}
+
+// render 1 specific pokemon with more information
+const render1Pokemon = (onePokemonData) => {
+    pokeContainer.innerHTML = ''
+    console.log(onePokemonData)
+    createPokemonName(onePokemonData)
+
+    
+    
+
+
+    
+}
+
+
+// create one pokemon name
+const createPokemonName = (onePokemonData) => {
+    
+    const nameDiv = document.createElement('div')
+    nameDiv.id = 'name-div'
+    const pokemonName = document.createElement('h2')
+    pokemonName.className = 'pokemon-name'
+    pokemonName.innerText = onePokemonData.name
+    nameDiv.appendChild(pokemonName)
+    pokeContainer.appendChild(nameDiv)
 }
 
 //event listeners

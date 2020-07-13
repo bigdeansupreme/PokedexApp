@@ -15,6 +15,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background: rgba(0, 0, 0, 0.75);
 }
 
 h1 {
@@ -26,11 +27,27 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
+
+.pokemon-name {
+  font-family: 'Bangers', cursive;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pokemon-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.pokemon-container, #name-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pokemon {
@@ -51,11 +68,13 @@ h1 {
     transform: scale(1.1)
 }
 
+
 .display-options {
     display: flex;
     align-items: flex-end;
     flex-direction: row-reverse;
     margin-bottom: 5px;
+    margin-top: 5px;
   }
   
   .display-options span {
