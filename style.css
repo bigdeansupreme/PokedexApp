@@ -87,6 +87,10 @@ h1 {
     font-family: 'Bangers', cursive;
 }
 
+.pokemon p {
+  font-family: 'Courgette', cursive;
+}
+
 .pokemon:hover {
     transform: scale(1.1)
 }

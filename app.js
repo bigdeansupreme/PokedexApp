@@ -84,6 +84,22 @@ const render1Pokemon = (onePokemonData) => {
     createPokemonImages(onePokemonData)
     createPokemonTypes(onePokemonData)
 
+    const statsDiv = document.createElement('div')
+    statsDiv.id = 'stats-div'
+
+    const baseStats = document.createElement('h3')
+    baseStats.innerText = 'Base Stats'
+    statsDiv.appendChild(baseStats)
+
+    onePokemonData.stats.forEach(stat => {
+        let pokemonStat = document.createElement('p')
+        pokemonStat.innerText = `${stat.stat.name}: ${stat.base_stat}`
+        statsDiv.append(pokemonStat)
+    })
+
+    pokeContainer.appendChild(statsDiv)
+
+
  
     
 }
