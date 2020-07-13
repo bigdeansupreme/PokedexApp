@@ -1,5 +1,5 @@
 // global variables
-const pokeContainer = document.querySelector('.pokemon-container')
+const pokeContainer = document.querySelector('.all-pokemon-container')
 const gen1Url = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 const gen2Url = 'https://pokeapi.co/api/v2/pokemon/?limit=100&offset=151'
 const gen3Url = 'https://pokeapi.co/api/v2/pokemon/?limit=135&offset=251'
@@ -12,6 +12,7 @@ const gen3Btn = document.getElementById('gen-three')
 // fetch list of pokemon urls
 const fetchPokemon = (url) => {
     pokeContainer.innerHTML = ''
+    pokeContainer.className = 'all-pokemon-container'
     fetch(url)
     .then(res => res.json())
     .then(allPokemon => {
@@ -74,10 +75,11 @@ const renderAllPokemon = pokeData => {
 // render 1 specific pokemon with more information
 const render1Pokemon = (onePokemonData) => {
     pokeContainer.innerHTML = ''
+    pokeContainer.className = 'pokemon-container'
     console.log(onePokemonData)
     createPokemonName(onePokemonData)
+    createPokemonImages(onePokemonData)
 
-    
     
 
 
@@ -86,15 +88,41 @@ const render1Pokemon = (onePokemonData) => {
 
 
 // create one pokemon name
-const createPokemonName = (onePokemonData) => {
+const createPokemonName = pokemon => {
     
     const nameDiv = document.createElement('div')
     nameDiv.id = 'name-div'
     const pokemonName = document.createElement('h2')
     pokemonName.className = 'pokemon-name'
-    pokemonName.innerText = onePokemonData.name
+    pokemonName.innerText = pokemon.name
     nameDiv.appendChild(pokemonName)
     pokeContainer.appendChild(nameDiv)
+}
+
+// create images of one pokemon
+const createPokemonImages = pokemon => {
+    const imagesDiv = document.createElement('div')
+    imagesDiv.id = 'images-div'
+
+    const pokemonFrontImage = document.createElement('img')
+    const pokemonBackImage = document.createElement('img')
+    pokemonFrontImage.className = 'pokemon-image'
+    pokemonBackImage.className = 'pokemon-image'
+    pokemonFrontImage.src = pokemon.sprites['front_default']
+    pokemonBackImage.src = pokemon.sprites['back_default']
+
+    shinySwitch.addEventListener('change', e => {
+        if (e.target.checked) {
+            pokemonFrontImage.src = pokemon.sprites['front_shiny']
+            pokemonBackImage.src = pokemon.sprites['back_shiny']
+        } else {
+            pokemonFrontImage.src = pokemon.sprites['front_default']
+            pokemonBackImage.src = pokemon.sprites['back_default']
+        }
+    })
+
+    imagesDiv.append(pokemonFrontImage, pokemonBackImage)
+    pokeContainer.appendChild(imagesDiv)
 }
 
 //event listeners

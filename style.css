@@ -28,15 +28,8 @@ h1 {
 }
 
 
-.pokemon-name {
-  font-family: 'Bangers', cursive;
-  font-size: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.pokemon-container {
+.all-pokemon-container {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -44,20 +37,36 @@ h1 {
   margin-top: 5px;
 }
 
-.pokemon-container, #name-div {
+.pokemon-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+
+.pokemon-container, #name-div, #images-div {
   align-items: center;
 }
 
+.pokemon-name {
+  font-family: 'Bangers', cursive;
+  font-size: 50px;
+  justify-content: center;
+  letter-spacing: 3px;
+}
+
+.pokemon-image {
+  max-width: 100%;
+  height: auto;
+}
+
 .pokemon {
-    cursor: pointer;
-    border-style: groove;
-    border-color: rgb(0 0 0 / 70%);
-    border-radius: 10px;
-    padding: 5px;
-    margin: 5px;
-    font-family: 'Play', sans-serif;
+  cursor: pointer;
+  border-style: groove;
+  border-color: rgb(0 0 0 / 70%);
+  border-radius: 10px;
+  padding: 5px;
+  margin: 5px;
+  font-family: 'Play', sans-serif;
 }
 
 .pokemon h3 {
