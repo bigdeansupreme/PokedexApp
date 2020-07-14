@@ -30,13 +30,28 @@ const fetchPokemonData = (pokemon) => {
 }
 
 // fetch 1 specific pokemon
-const fetch1Pokemon = (e) => {
+const fetch1Pokemon = e => {
     let pokeId = e.target.dataset.id
     const specificPokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokeId}/`
     fetch(specificPokemonUrl)
     .then(res => res.json())
     .then(onePokemonData => render1Pokemon(onePokemonData))
 
+}
+
+//fetch pokemon cards for that one pokemon
+const fetchPokemonCards = e => {
+    let name = e.target.parentElement.firstElementChild.innerText
+    const pokemonCardUrl = `https://api.pokemontcg.io/v1/cards?name=${name}`
+    fetch(pokemonCardUrl)
+    .then(res => res.json())
+    .then(console.log)
+
+}
+
+const fetchPokemonAndCards = e => {
+    fetch1Pokemon(e)
+    fetchPokemonCards(e)
 }
 
 // display pokemon with data retrieved
@@ -70,7 +85,7 @@ const createAllGenPokemon = pokeData => {
         }
     })
     
-    pokeDiv.addEventListener('click', fetch1Pokemon)
+    pokeDiv.addEventListener('click', fetchPokemonAndCards)
     
     pokeDiv.append(pokeName, pokeImg, pokeNum, pokeType)
     pokeContainer.appendChild(pokeDiv)
