@@ -16,7 +16,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.84);
 }
 
 h1 {
@@ -60,7 +60,7 @@ h1 {
   border-radius: 10px;
   border: 2px solid black;
   background: black;
-  color: white;
+  padding: 2px 6px;
 }
 
 #stats-div {
@@ -104,7 +104,7 @@ h1 {
 }
 
 #stats-div #poke-stat-6 {
-  background-color: #FFFF99;
+  background-color: #FFFF66;
 }
 
 

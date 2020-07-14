@@ -77,17 +77,16 @@ const createAllGenPokemon = pokeData => {
 }
 
 // render 1 specific pokemon with more information
-const render1Pokemon = (onePokemonData) => {
+const render1Pokemon = (pokemon) => {
     onePokemonContainer()
-    console.log(onePokemonData)
-    createPokemonName(onePokemonData)
-    createPokemonImages(onePokemonData)
-    createPokemonTypes(onePokemonData)
-    createPokemonStats(onePokemonData)
+    console.log(pokemon)
+    createPokemonName(pokemon)
+    createPokemonImages(pokemon)
+    createPokemonAbility(pokemon)
+    createPokemonTypes(pokemon)
+    createPokemonStats(pokemon)
 
-
-
-
+    
  
     
 }
@@ -138,6 +137,65 @@ const createPokemonTypes = pokemon => {
     pokemon.types.forEach(type => {
         let pokemonType = document.createElement('h4')
         pokemonType.innerText = type.type.name
+        switch (pokemonType.innerText) {
+            case 'normal':
+                pokemonType.style.color = '#f5f5dc'
+                break;
+            case 'fire':
+                pokemonType.style.color = '#ff4500'
+                break;
+            case 'flying':
+                pokemonType.style.color = '#967BB6'
+                break;
+            case 'water':
+                pokemonType.style.color = '#326aff' 
+                break;
+            case 'grass':
+                pokemonType.style.color = '#00b600'
+                break;
+            case 'electric':
+                pokemonType.style.color = '#eef010'
+                break;
+            case 'ground':
+                pokemonType.style.color = '#d59d77'
+                break;
+            case 'rock':
+                pokemonType.style.color = '#88512b'
+                break;
+            case 'fighting':
+                pokemonType.style.color = '#b03500'
+                break;
+            case 'ice':
+                pokemonType.style.color = '#7fcfff'
+                break;
+            case 'poison':
+                pokemonType.style.color = '#993299'
+                break;
+            case 'dragon':
+                pokemonType.style.color = '#5500ae'
+                break;
+            case 'bug':
+                pokemonType.style.color = '#9cc971'
+                break;
+            case 'ghost':
+                pokemonType.style.color = '#7b5887'
+                break;
+            case 'psychic':
+                pokemonType.style.color = '#f1415f'
+                break;
+            case 'dark':
+                pokemonType.style.color = '#323232'
+                break;
+            case 'steel':
+                pokemonType.style.color = '#a6a6a6'
+                break;
+            case 'fairy':
+                pokemonType.style.color = '#ffc0cb'
+                break;     
+            default:
+                pokemonType.style.color = 'white'
+
+        }
         typesDiv.append(pokemonType)
     })
 
@@ -163,6 +221,18 @@ const createPokemonStats = onePokemonData => {
     })
 
     pokeContainer.appendChild(statsDiv)
+}
+
+// create ability of one pokemon
+const createPokemonAbility = pokemon => {
+    const abilityDiv = document.createElement('div')
+    abilityDiv.id = 'ability-div'
+
+    const abilityName = document.createElement('h3')
+    abilityName.innerText = `ability: ${pokemon.abilities[0].ability.name}`
+
+    abilityDiv.appendChild(abilityName)
+    pokeContainer.appendChild(abilityDiv)
 }
 
 // refresh container to style for 1 pokemon
