@@ -8,6 +8,14 @@ const gen1Btn = document.getElementById('gen-one')
 const gen2Btn = document.getElementById('gen-two')
 const gen3Btn = document.getElementById('gen-three')
 
+//creating 3 containers for single pokemon display
+const pokeInfoContainer = document.createElement('div')
+const pokeLeftCardsContainer = document.createElement('div')
+const pokeRightCardsContainer = document.createElement('div')
+pokeInfoContainer.id = 'poke-info-container'
+pokeLeftCardsContainer.id = 'poke-cards-left-container'
+pokeRightCardsContainer.id = 'poke-cards-right-container'
+
 
 // fetch list of pokemon urls
 const fetchAllPokemon = (url) => {
@@ -45,7 +53,7 @@ const fetchPokemonCards = e => {
     const pokemonCardUrl = `https://api.pokemontcg.io/v1/cards?name=${name}`
     fetch(pokemonCardUrl)
     .then(res => res.json())
-    .then(console.log)
+    .then(cardsData => renderCards(cardsData))
 
 }
 
@@ -57,6 +65,29 @@ const fetchPokemonAndCards = e => {
 // display pokemon with data retrieved
 const renderAllPokemon = pokeData => {
     createAllGenPokemon(pokeData)
+}
+
+const renderCards = cardsData => {
+    const cardLeftDiv = document.createElement('div')
+    const cardRightDiv = document.createElement('div')
+
+    for(let i = 0; i < cardsData.cards.length; i++) {
+        if(i % 2 === 0) {
+            let leftCardImage = document.createElement('img')
+            leftCardImage.className = 'card-image-left-side'
+            leftCardImage.src = cardsData.cards[i].imageUrl
+            cardLeftDiv.appendChild(leftCardImage)
+            pokeLeftCardsContainer.appendChild(cardLeftDiv)
+        } else {
+            let rightCardImage = document.createElement('img')
+            rightCardImage.className = 'card-image-right-side'
+            rightCardImage.src = cardsData.cards[i].imageUrl
+            cardRightDiv.appendChild(rightCardImage)
+            pokeRightCardsContainer.appendChild(cardRightDiv)
+        }
+    }
+         
+
 }
 
 
@@ -115,7 +146,7 @@ const createPokemonName = pokemon => {
     pokemonName.className = 'pokemon-name'
     pokemonName.innerText = pokemon.name
     nameDiv.appendChild(pokemonName)
-    pokeContainer.appendChild(nameDiv)
+    pokeInfoContainer.appendChild(nameDiv)
 }
 
 // create images of one pokemon, slap on dom
@@ -141,7 +172,7 @@ const createPokemonImages = pokemon => {
     })
 
     imagesDiv.append(pokemonFrontImage, pokemonBackImage)
-    pokeContainer.appendChild(imagesDiv)
+    pokeInfoContainer.appendChild(imagesDiv)
 }
 
 // create types of one pokemon, slap on dom
@@ -178,7 +209,7 @@ const createPokemonTypes = pokemon => {
                 pokemonType.style.color = '#88512b'
                 break;
             case 'fighting':
-                pokemonType.style.color = '#b03500'
+                pokemonType.style.color = '#a85f67'
                 break;
             case 'ice':
                 pokemonType.style.color = '#7fcfff'
@@ -214,7 +245,7 @@ const createPokemonTypes = pokemon => {
         typesDiv.append(pokemonType)
     })
 
-    pokeContainer.appendChild(typesDiv)
+    pokeInfoContainer.appendChild(typesDiv)
 }
 
 // create stats of one pokemon, slap on dom
@@ -235,7 +266,7 @@ const createPokemonStats = onePokemonData => {
         statsDiv.append(pokemonStat)
     })
 
-    pokeContainer.appendChild(statsDiv)
+    pokeInfoContainer.appendChild(statsDiv)
 }
 
 // create ability of one pokemon
@@ -247,13 +278,17 @@ const createPokemonAbility = pokemon => {
     abilityName.innerText = `ability: ${pokemon.abilities[0].ability.name}`
 
     abilityDiv.appendChild(abilityName)
-    pokeContainer.appendChild(abilityDiv)
+    pokeInfoContainer.appendChild(abilityDiv)
 }
 
 // refresh container to style for 1 pokemon
 const onePokemonContainer = () => {
     pokeContainer.innerHTML = ''
+    pokeContainer.append(pokeLeftCardsContainer, pokeInfoContainer, pokeRightCardsContainer)
     pokeContainer.className = 'pokemon-container'
+    pokeLeftCardsContainer.innerHTML = ''
+    pokeInfoContainer.innerHTML = ''
+    pokeRightCardsContainer.innerHTML = ''
 }
 
 // refresh container to style all pokemon

@@ -40,12 +40,64 @@ h1 {
 
 .pokemon-container {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-between;
+  margin: 8px 0;
 }
 
-.pokemon-container, #name-div, #images-div {
-  align-items: center;
+
+#poke-cards-left-container div {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+#poke-info-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+}
+
+#poke-cards-right-container div {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+#name-div {
+  text-align: center;
+}
+
+.card-image-left-side {
+  max-width: 65%;
+  height: auto;
+  flex-grow: 1;
+  margin: 8px 0;
+  transition: 0.7s ease all;
+}
+
+.card-image-right-side {
+  max-width: 65%;
+  height: auto;
+  flex-grow: 1;
+  margin: 8px 0;
+  transition: 0.7s ease all;
+}
+
+.card-image-left-side:hover, .card-image-right-side:hover {
+  transform: scale(1.5);
+}
+
+.pokemon-container #images-div {
+  display: flex;
+  justify-content: center;
 }
 
 #types-div {
@@ -105,6 +157,10 @@ h1 {
 
 #stats-div #poke-stat-6 {
   background-color: #FFFF66;
+}
+
+#ability-div {
+  text-align: center;
 }
 
 
