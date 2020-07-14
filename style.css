@@ -74,6 +74,39 @@ h1 {
   font-size: 25px;
 }
 
+#stats-div p {
+  border: 2px solid black;
+  border-radius: 10px;
+  border-style: hidden;
+  text-align: center;
+}
+
+#stats-div #poke-stat-1 {
+  background-color: #00FF80;
+}
+
+#stats-div #poke-stat-2 {
+  background-color: orangered;
+}
+
+#stats-div #poke-stat-3 {
+  background-color: royalblue;
+}
+
+#stats-div #poke-stat-4 {
+  padding: 0 5px;
+  background-color: slateblue;
+}
+
+#stats-div #poke-stat-5 {
+  padding: 0 7px;
+  background-color: lightslategray;
+}
+
+#stats-div #poke-stat-6 {
+  background-color: #FFFF99;
+}
+
 
 .pokemon-name {
   font-family: 'Bangers', cursive;

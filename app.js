@@ -152,10 +152,13 @@ const createPokemonStats = onePokemonData => {
     const baseStats = document.createElement('h3')
     baseStats.innerText = 'Base Stats:'
     statsDiv.appendChild(baseStats)
-
+    
+    let counter = 1
     onePokemonData.stats.forEach(stat => {
         let pokemonStat = document.createElement('p')
+        pokemonStat.id = `poke-stat-${counter}`
         pokemonStat.innerText = `${stat.stat.name}: ${stat.base_stat}`
+        counter++
         statsDiv.append(pokemonStat)
     })
 
