@@ -321,6 +321,14 @@ gen3Btn.addEventListener('click', () => {
     fetchAllPokemon(gen3Url)
 })
 
+gen4Btn.addEventListener('click', () => {
+    fetchAllPokemon(gen4Url)
+})
+
+gen5Btn.addEventListener('click', () => {
+    fetchAllPokemon(gen5Url)
+})
+
 
 
 
