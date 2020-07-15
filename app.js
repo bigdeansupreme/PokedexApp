@@ -79,23 +79,20 @@ const renderAllPokemon = pokeData => {
 }
 
 const renderCards = cardsData => {
-    const cardLeftDiv = document.createElement('div')
-    const cardRightDiv = document.createElement('div')
-    // console.log(cardsData)
+
+    console.log(cardsData)
 
     for(let i = 0; i < cardsData.cards.length; i++) {
         if(i % 2 === 0) {
             let leftCardImage = document.createElement('img')
             leftCardImage.className = 'card-image-left-side'
             leftCardImage.src = cardsData.cards[i].imageUrl
-            cardLeftDiv.appendChild(leftCardImage)
-            pokeLeftCardsContainer.appendChild(cardLeftDiv)
+            pokeLeftCardsContainer.appendChild(leftCardImage)
         } else {
             let rightCardImage = document.createElement('img')
             rightCardImage.className = 'card-image-right-side'
             rightCardImage.src = cardsData.cards[i].imageUrl
-            cardRightDiv.appendChild(rightCardImage)
-            pokeRightCardsContainer.appendChild(cardRightDiv)
+            pokeRightCardsContainer.appendChild(rightCardImage)
         }
     }
          

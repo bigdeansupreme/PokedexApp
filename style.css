@@ -46,13 +46,14 @@ h1 {
 }
 
 
-#poke-cards-left-container div {
+#poke-cards-left-container {
   display: flex;
   flex-direction: column;
   align-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
   align-content: center;
+  width: 20%;
 }
 
 #poke-info-container {
@@ -62,13 +63,14 @@ h1 {
   justify-content: flex-start;
 }
 
-#poke-cards-right-container div {
+#poke-cards-right-container {
   display: flex;
   flex-direction: column;
   align-content: flex-end;
   align-items: flex-end;
   flex-wrap: wrap;
   align-content: center;
+  width: 20%;
 }
 
 #name-div {
@@ -76,7 +78,7 @@ h1 {
 }
 
 .card-image-left-side {
-  max-width: 65%;
+  width: 70%;
   height: auto;
   flex-grow: 1;
   margin: 8px 0;
@@ -84,7 +86,7 @@ h1 {
 }
 
 .card-image-right-side {
-  max-width: 65%;
+  width: 70%;
   height: auto;
   flex-grow: 1;
   margin: 8px 0;
@@ -179,11 +181,12 @@ h1 {
 .pokemon {
   cursor: pointer;
   border-style: groove;
-  border-color: rgb(0 0 0 / 70%);
   border-radius: 10px;
+  box-shadow: inset 0 0 0.5px black;
   padding: 5px;
   margin: 5px;
   font-family: 'Play', sans-serif;
+  transition: 0.5s ease all;
 }
 
 .pokemon h3 {
@@ -308,9 +311,9 @@ h1 {
       background: linear-gradient(90deg, rgba(177, 2, 2, 0.918) 50%, rgb(19, 2, 172) 50%);
   }
 
-  /* #gen-four {
-
-  } */
+  #gen-four {
+    background: linear-gradient(90deg, #d9ebf4 50%, #a908a3 50%);
+  }
 
   #gen-five {
     background: linear-gradient(90deg, black 50%, white 50%);
