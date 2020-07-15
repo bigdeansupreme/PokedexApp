@@ -172,6 +172,17 @@ h1 {
   margin-top: 5px;
 }
 
+#species-div {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border-style: groove;
+  margin-top: 5px;
+}
+
 
 .pokemon-name {
   font-family: 'Bangers', cursive;

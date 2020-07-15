@@ -51,6 +51,17 @@ const fetch1Pokemon = e => {
 
 }
 
+// fetch species & evolution chain of 1 pokemon
+const fetch1PokemonSpecies = e => {
+    let pokemonId = e.target.dataset.id
+    const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonId}/`
+    fetch(pokemonSpeciesUrl)
+    .then(res => res.json())
+    .then(data => {
+        // fetchEvolutionChain(data)
+        renderSpeciesData(data)
+    })
+}
 
 //fetch pokemon cards for that one pokemon
 const fetchPokemonCards = e => {
@@ -65,6 +76,7 @@ const fetchPokemonCards = e => {
 const fetchPokemonAndCards = e => {
     fetch1Pokemon(e)
     fetchPokemonCards(e)
+    fetch1PokemonSpecies(e)
 }
 
 // display pokemon with data retrieved
@@ -88,6 +100,33 @@ const renderCards = cardsData => {
         }
     }
          
+
+}
+
+const fetchEvolutionChain = poke => {
+    let evoChainUrl = poke['evolution_chain'].url
+    fetch(evoChainUrl)
+    .then(res => res.json())
+    .then(console.log)
+}
+
+const renderSpeciesData = poke => {
+
+    const speciesDiv = document.createElement('div')
+    speciesDiv.id = 'species-div'
+
+    const pokeDexEntry = document.createElement('h3')
+    pokeDexEntry.innerText = 'Pokedex Entries'
+
+    const dexRegionInfo = document.createElement('h4')
+    dexRegionInfo.innerText = `Region: ${poke.pokedex_numbers[1].pokedex.name}` + ` Pokedex Number: ${poke.pokedex_numbers[1].entry_number}`
+
+    const dexNationalInfo = document.createElement('h4')
+    dexNationalInfo.innerText = `Region: ${poke.pokedex_numbers[0].pokedex.name}` + ` Pokedex Number: ${poke.pokedex_numbers[0].entry_number}`
+
+    speciesDiv.append(pokeDexEntry, dexRegionInfo, dexNationalInfo)
+
+    pokeInfoContainer.appendChild(speciesDiv)
 
 }
 
