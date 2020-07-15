@@ -295,6 +295,7 @@ h1 {
 
   button {
       cursor: pointer;
+      background: linear-gradient(to top, blue, yellow);
       border-radius: 10px;
       outline: none;
       min-width: 100px;
@@ -310,27 +311,6 @@ h1 {
   button:active {
       transform: translateY(4px);
   }
-
-  #gen-one {
-    background: linear-gradient(90deg, rgb(247, 15, 15) 50%, rgb(41, 41, 245) 50%);
-  }
-
-  #gen-two {
-      background: linear-gradient(90deg, silver 50%, rgb(247, 190, 4) 50%);
-  }
-
-  #gen-three {
-      background: linear-gradient(90deg, rgba(177, 2, 2, 0.918) 50%, rgb(19, 2, 172) 50%);
-  }
-
-  #gen-four {
-    background: linear-gradient(90deg, #d9ebf4 50%, #a908a3 50%);
-  }
-
-  #gen-five {
-    background: linear-gradient(90deg, black 50%, white 50%);
-  }
-
 
 
 
