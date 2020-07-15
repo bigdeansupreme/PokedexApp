@@ -307,3 +307,11 @@ h1 {
   #gen-three {
       background: linear-gradient(90deg, rgba(177, 2, 2, 0.918) 50%, rgb(19, 2, 172) 50%);
   }
+
+  /* #gen-four {
+
+  } */
+
+  #gen-five {
+    background: linear-gradient(90deg, black 50%, white 50%);
+  }

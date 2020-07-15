@@ -3,10 +3,14 @@ const pokeContainer = document.querySelector('.all-pokemon-container')
 const gen1Url = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 const gen2Url = 'https://pokeapi.co/api/v2/pokemon/?limit=100&offset=151'
 const gen3Url = 'https://pokeapi.co/api/v2/pokemon/?limit=135&offset=251'
+const gen4Url = 'https://pokeapi.co/api/v2/pokemon/?limit=107&offset=386'
+const gen5Url = 'https://pokeapi.co/api/v2/pokemon/?limit=156&offset=493'
 const shinySwitch = document.querySelector('input[type="checkbox"]')
 const gen1Btn = document.getElementById('gen-one')
 const gen2Btn = document.getElementById('gen-two')
 const gen3Btn = document.getElementById('gen-three')
+const gen4Btn = document.getElementById('gen-four')
+const gen5Btn = document.getElementById('gen-five')
 
 //creating 3 containers for single pokemon display
 const pokeInfoContainer = document.createElement('div')
@@ -47,6 +51,13 @@ const fetch1Pokemon = e => {
 
 }
 
+// const handleErrors = res => {
+//     if (!res.ok) {
+//         throw Error(res.statusText)
+//     }
+//     return res
+// }
+
 //fetch pokemon cards for that one pokemon
 const fetchPokemonCards = e => {
     let name = e.target.parentElement.firstElementChild.innerText
@@ -70,6 +81,7 @@ const renderAllPokemon = pokeData => {
 const renderCards = cardsData => {
     const cardLeftDiv = document.createElement('div')
     const cardRightDiv = document.createElement('div')
+    // console.log(cardsData)
 
     for(let i = 0; i < cardsData.cards.length; i++) {
         if(i % 2 === 0) {
