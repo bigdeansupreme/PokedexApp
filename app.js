@@ -51,12 +51,6 @@ const fetch1Pokemon = e => {
 
 }
 
-// const handleErrors = res => {
-//     if (!res.ok) {
-//         throw Error(res.statusText)
-//     }
-//     return res
-// }
 
 //fetch pokemon cards for that one pokemon
 const fetchPokemonCards = e => {
@@ -79,8 +73,6 @@ const renderAllPokemon = pokeData => {
 }
 
 const renderCards = cardsData => {
-
-    console.log(cardsData)
 
     for(let i = 0; i < cardsData.cards.length; i++) {
         if(i % 2 === 0) {
@@ -140,9 +132,6 @@ const render1Pokemon = (pokemon) => {
     createPokemonAbility(pokemon)
     createPokemonTypes(pokemon)
     createPokemonStats(pokemon)
-
-    
- 
     
 }
 
@@ -286,7 +275,19 @@ const createPokemonAbility = pokemon => {
     const abilityName = document.createElement('h3')
     abilityName.innerText = `ability: ${pokemon.abilities[0].ability.name}`
 
-    abilityDiv.appendChild(abilityName)
+    let abilityDescription = document.createElement('p')
+    abilityDescription.innerText = pokemon.abilities[0].ability.url
+    fetch(abilityDescription.innerText)
+    .then(res => res.json())
+    .then(data => {
+        if (data['effect_entries'][1].language.name === 'en') {
+            abilityDescription.innerText = data['effect_entries'][1].effect
+        } else {
+            abilityDescription.innerText = data['effect_entries'][0].effect
+        }
+    })
+
+    abilityDiv.append(abilityName, abilityDescription)
     pokeInfoContainer.appendChild(abilityDiv)
 }
 
