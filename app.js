@@ -119,10 +119,10 @@ const renderSpeciesData = poke => {
     pokeDexEntry.innerText = 'Pokedex Entries'
 
     const dexRegionInfo = document.createElement('h4')
-    dexRegionInfo.innerText = `Region: ${poke.pokedex_numbers[1].pokedex.name}` + ` Pokedex Number: ${poke.pokedex_numbers[1].entry_number}`
+    dexRegionInfo.innerText = `Pokedex Number: ${poke.pokedex_numbers[1].entry_number} ` + ' |' + ` Region: ${poke.pokedex_numbers[1].pokedex.name}`
 
     const dexNationalInfo = document.createElement('h4')
-    dexNationalInfo.innerText = `Region: ${poke.pokedex_numbers[0].pokedex.name}` + ` Pokedex Number: ${poke.pokedex_numbers[0].entry_number}`
+    dexNationalInfo.innerText = `Pokedex Number: ${poke.pokedex_numbers[0].entry_number} ` + ' |' + ` Region: ${poke.pokedex_numbers[0].pokedex.name}`
 
     speciesDiv.append(pokeDexEntry, dexRegionInfo, dexNationalInfo)
 
@@ -165,12 +165,12 @@ const createAllGenPokemon = pokeData => {
 // render 1 specific pokemon with more information
 const render1Pokemon = (pokemon) => {
     onePokemonContainer()
-    console.log(pokemon)
     createPokemonName(pokemon)
     createPokemonImages(pokemon)
     createPokemonAbility(pokemon)
     createPokemonTypes(pokemon)
     createPokemonStats(pokemon)
+    createPokemonMoves(pokemon)
     
 }
 
@@ -328,6 +328,54 @@ const createPokemonAbility = pokemon => {
 
     abilityDiv.append(abilityName, abilityDescription)
     pokeInfoContainer.appendChild(abilityDiv)
+}
+
+const createPokemonMoves = poke => {
+    const movesDiv = document.createElement('div')
+    movesDiv.id = 'moves-div'
+    const movesTitle = document.createElement('h2')
+    movesTitle.innerText = 'Moves Learned by Leveling Up'
+
+    let movesArray = []
+    poke.moves.forEach(move => {
+        move.version_group_details.forEach(obj => {
+            if (obj.level_learned_at >= 1) {
+                let newObj = new Object()
+                newObj['name'] = move.move.name
+                newObj['level'] = obj.level_learned_at
+                movesArray.push(newObj)
+            }
+        })
+    })
+    
+    const results = [];
+    const map = new Map();
+    for (const item of movesArray) {
+        if(!map.has(item.name)){
+        map.set(item.name, true);
+        results.push({
+            name: item.name,
+            level: item.level
+            });
+        }
+    }
+    results.sort((a,b) => a.level - b.level)
+
+    movesDiv.appendChild(movesTitle)
+
+    results.forEach(obj => {
+        let moveName = document.createElement('h3')
+
+        moveName.className = 'move-name'
+
+        moveName.innerText = `${obj.name}:` + ` Lvl ${obj.level}`
+
+        movesDiv.appendChild(moveName)
+    })
+
+
+    pokeInfoContainer.appendChild(movesDiv)
+
 }
 
 // refresh container to style for 1 pokemon
