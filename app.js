@@ -20,10 +20,12 @@ pokeInfoContainer.id = 'poke-info-container'
 pokeLeftCardsContainer.id = 'poke-cards-left-container'
 pokeRightCardsContainer.id = 'poke-cards-right-container'
 
+let allPokemonArray = [];
 
 // fetch list of pokemon urls
 const fetchAllPokemon = (url) => {
     allPokemonContainer()
+    allPokemonArray = []
     fetch(url)
     .then(res => res.json())
     .then(allPokemon => {
@@ -130,9 +132,10 @@ const renderSpeciesData = poke => {
 
 }
 
-
 // create all pokemon for a generation
 const createAllGenPokemon = pokeData => {
+
+
     const pokeDiv = document.createElement('div')
     const pokeName = document.createElement('h3')
     const pokeImg = document.createElement('img')
@@ -159,7 +162,12 @@ const createAllGenPokemon = pokeData => {
     pokeDiv.addEventListener('click', fetchPokemonAndCards)
     
     pokeDiv.append(pokeName, pokeImg, pokeNum, pokeType)
-    pokeContainer.appendChild(pokeDiv)
+    allPokemonArray.push(pokeDiv)
+    allPokemonArray.sort((a,b) => a.dataset.id - b.dataset.id)
+
+    allPokemonArray.forEach(obj => {
+        pokeContainer.appendChild(obj)
+    })
 }
 
 // render 1 specific pokemon with more information
