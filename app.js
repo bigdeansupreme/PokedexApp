@@ -216,11 +216,13 @@ const createPokemonImages = pokemon => {
     pokemonBackImage.className = 'pokemon-image'
     pokemonFrontImage.src = pokemon.sprites['front_default']
     pokemonBackImage.src = pokemon.sprites['back_default']
+    pokemonBackImage.alt = 'sprite unavailable'
 
     shinySwitch.addEventListener('change', e => {
         if (e.target.checked) {
             pokemonFrontImage.src = pokemon.sprites['front_shiny']
             pokemonBackImage.src = pokemon.sprites['back_shiny']
+            pokemonBackImage.alt = 'sprite unavailable'
         } else {
             pokemonFrontImage.src = pokemon.sprites['front_default']
             pokemonBackImage.src = pokemon.sprites['back_default']
