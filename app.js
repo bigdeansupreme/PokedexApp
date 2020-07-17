@@ -6,6 +6,7 @@ const gen3Url = 'https://pokeapi.co/api/v2/pokemon/?limit=135&offset=251'
 const gen4Url = 'https://pokeapi.co/api/v2/pokemon/?limit=107&offset=386'
 const gen5Url = 'https://pokeapi.co/api/v2/pokemon/?limit=156&offset=493'
 const shinySwitch = document.querySelector('input[type="checkbox"]')
+const shinySun = document.querySelector('.fas')
 const gen1Btn = document.getElementById('gen-one')
 const gen2Btn = document.getElementById('gen-two')
 const gen3Btn = document.getElementById('gen-three')
@@ -424,7 +425,13 @@ gen5Btn.addEventListener('click', () => {
     fetchAllPokemon(gen5Url)
 })
 
-
+shinySwitch.addEventListener('change', e => {
+    if (e.target.checked) {
+        shinySun.style.color = 'orange'
+    } else {
+        shinySun.style.color = 'black'
+    }
+})
 
 
 
