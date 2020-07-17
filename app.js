@@ -1,10 +1,13 @@
 // global variables
 const pokeContainer = document.querySelector('.all-pokemon-container')
+const welcomeContainer = document.querySelector('.welcome')
 const gen1Url = 'https://pokeapi.co/api/v2/pokemon?limit=151'
 const gen2Url = 'https://pokeapi.co/api/v2/pokemon/?limit=100&offset=151'
 const gen3Url = 'https://pokeapi.co/api/v2/pokemon/?limit=135&offset=251'
 const gen4Url = 'https://pokeapi.co/api/v2/pokemon/?limit=107&offset=386'
 const gen5Url = 'https://pokeapi.co/api/v2/pokemon/?limit=156&offset=493'
+const gen6Url = 'https://pokeapi.co/api/v2/pokemon/?limit=72&offset=649'
+const gen7Url = 'https://pokeapi.co/api/v2/pokemon/?limit=88&offset=721'
 const shinySwitch = document.querySelector('input[type="checkbox"]')
 const shinySun = document.querySelector('.fas')
 const gen1Btn = document.getElementById('gen-one')
@@ -12,6 +15,9 @@ const gen2Btn = document.getElementById('gen-two')
 const gen3Btn = document.getElementById('gen-three')
 const gen4Btn = document.getElementById('gen-four')
 const gen5Btn = document.getElementById('gen-five')
+const gen6Btn = document.getElementById('gen-six')
+const gen7Btn = document.getElementById('gen-seven')
+const gen8Btn = document.getElementById('gen-eight')
 
 //creating 3 containers for single pokemon display
 const pokeInfoContainer = document.createElement('div')
@@ -85,6 +91,10 @@ const fetchPokemonAndCards = e => {
 // display pokemon with data retrieved
 const renderAllPokemon = pokeData => {
     createAllGenPokemon(pokeData)
+}
+
+const hideWelcome = () => {
+    welcomeContainer.style.display = 'none'
 }
 
 const renderCards = cardsData => {
@@ -403,26 +413,52 @@ const allPokemonContainer = () => {
     pokeContainer.className = 'all-pokemon-container'
 }
 
+const displayWelcome = () => {
+    welcomeContainer.style.display = 'block'
+    welcomeContainer.firstElementChild.innerHTML = `lol, relax bro. Haven't you read the title?`
+
+}
+
 //event listeners
 
 gen1Btn.addEventListener('click', () => {
+    hideWelcome()
     fetchAllPokemon(gen1Url)
 })
 
 gen2Btn.addEventListener('click', () => {
+    hideWelcome()
     fetchAllPokemon(gen2Url)
 })
 
 gen3Btn.addEventListener('click', () => {
+    hideWelcome()
     fetchAllPokemon(gen3Url)
 })
 
 gen4Btn.addEventListener('click', () => {
+    hideWelcome()
     fetchAllPokemon(gen4Url)
 })
 
 gen5Btn.addEventListener('click', () => {
+    hideWelcome()
     fetchAllPokemon(gen5Url)
+})
+
+gen6Btn.addEventListener('click', () => {
+    hideWelcome()
+    fetchAllPokemon(gen6Url)
+})
+
+gen7Btn.addEventListener('click', () => {
+    hideWelcome()
+    fetchAllPokemon(gen7Url)
+})
+
+gen8Btn.addEventListener('click', () => {
+    allPokemonContainer()
+    displayWelcome()
 })
 
 shinySwitch.addEventListener('change', e => {

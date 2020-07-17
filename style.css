@@ -16,16 +16,26 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    /* background: rgba(0, 0, 0, 0.3); */
-}
-
-h1 {
+  }
+  
+  h1 {
     font-family: 'Finger Paint', cursive, sans-serif;
-    font-size: 45px;
+    font-size: 48px;
+    letter-spacing: 1px;
     background: -webkit-linear-gradient(red, yellow);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .welcome {
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .welcome h1 {
+  font-family: 'Bangers', cursive;
+  font-size: 60px;
 }
 
 
@@ -339,6 +349,7 @@ h1 {
 
   button {
       cursor: pointer;
+      font-family: 'Finger Paint', cursive, sans-serif;
       background: linear-gradient(to top, blue, yellow);
       border-radius: 10px;
       outline: none;
